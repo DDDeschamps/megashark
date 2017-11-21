@@ -20,7 +20,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($movie->name) ?></td>
+            <td><?= h($movie->nameee) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -29,6 +29,10 @@
         <tr>
             <th scope="row"><?= __('Duration') ?></th>
             <td><?= $this->Number->format($movie->duration) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Date') ?></th>
+            <td><?= $this->Number->format($movie->date) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
