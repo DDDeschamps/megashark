@@ -16,8 +16,7 @@ class MoviesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.movies',
-        'app.showtimes'
+        'app.movies'
     ];
 
     /**
