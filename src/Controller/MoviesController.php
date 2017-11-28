@@ -6,7 +6,6 @@ use App\Controller\AppController;
 /**
  * Movies Controller
  *
- * @property \App\Model\Table\MoviesTable $Movies
  *
  * @method \App\Model\Entity\Movie[] paginate($object = null, array $settings = [])
  */
@@ -36,7 +35,7 @@ class MoviesController extends AppController
     public function view($id = null)
     {
         $movie = $this->Movies->get($id, [
-            'contain' => ['Showtimes']
+            'contain' => []
         ]);
 
         $this->set('movie', $movie);
@@ -52,10 +51,12 @@ class MoviesController extends AppController
     {
         $movie = $this->Movies->newEntity();
         if ($this->request->is('post')) {
-            debug($this->request->getData());
             $movie = $this->Movies->patchEntity($movie, $this->request->getData());
-            debug($movie);
+<<<<<<< HEAD
+            debugopen ($movie);
             die();
+=======
+>>>>>>> eba420a52cb6ce31b4b01b43398ebd3c09a28f56
             if ($this->Movies->save($movie)) {
                 $this->Flash->success(__('The movie has been saved.'));
 
