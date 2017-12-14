@@ -1,7 +1,6 @@
 <?php
 use Migrations\AbstractMigration;
-
-class AddreleaseDateToMovies extends AbstractMigration
+class AddReleaseDate extends AbstractMigration
 {
     /**
      * Change Method.
@@ -13,10 +12,8 @@ class AddreleaseDateToMovies extends AbstractMigration
     public function change()
     {
         $table = $this->table('movies');
-        $table->addColumn('release_date', 'date', [
-            'default' => null,
-            'null' => false,
-        ]);
-        $table->update();
+              $table->addColumn('release_date', 'date' )
+              ->update();
+        
     }
 }

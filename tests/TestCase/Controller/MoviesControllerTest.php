@@ -1,24 +1,21 @@
 <?php
 namespace App\Test\TestCase\Controller;
-
 use App\Controller\MoviesController;
 use Cake\TestSuite\IntegrationTestCase;
-
 /**
  * App\Controller\MoviesController Test Case
  */
 class MoviesControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
-        'app.movies'
+        'app.movies',
+        'app.showtimes'
     ];
-
     /**
      * Test index method
      *
@@ -28,7 +25,6 @@ class MoviesControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test view method
      *
@@ -38,7 +34,6 @@ class MoviesControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test add method
      *
@@ -48,7 +43,6 @@ class MoviesControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test edit method
      *
@@ -58,7 +52,6 @@ class MoviesControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test delete method
      *

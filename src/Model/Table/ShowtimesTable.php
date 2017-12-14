@@ -1,11 +1,9 @@
 <?php
 namespace App\Model\Table;
-
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
 /**
  * Showtimes Model
  *
@@ -24,7 +22,6 @@ use Cake\Validation\Validator;
  */
 class ShowtimesTable extends Table
 {
-
     /**
      * Initialize method
      *
@@ -34,13 +31,10 @@ class ShowtimesTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
         $this->setTable('showtimes');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
-
         $this->addBehavior('Timestamp');
-
         $this->belongsTo('Movies', [
             'foreignKey' => 'movie_id',
             'joinType' => 'INNER'
@@ -50,7 +44,6 @@ class ShowtimesTable extends Table
             'joinType' => 'INNER'
         ]);
     }
-
     /**
      * Default validation rules.
      *
@@ -62,20 +55,16 @@ class ShowtimesTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
-
         $validator
             ->dateTime('start')
             ->requirePresence('start', 'create')
             ->notEmpty('start');
-
         $validator
             ->dateTime('end')
             ->requirePresence('end', 'create')
             ->notEmpty('end');
-
         return $validator;
     }
-
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.
@@ -87,7 +76,6 @@ class ShowtimesTable extends Table
     {
         $rules->add($rules->existsIn(['movie_id'], 'Movies'));
         $rules->add($rules->existsIn(['room_id'], 'Rooms'));
-
         return $rules;
     }
 }

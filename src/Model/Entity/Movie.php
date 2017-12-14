@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Entity;
-
 use Cake\ORM\Entity;
-
 /**
  * Movie Entity
  *
@@ -12,13 +10,11 @@ use Cake\ORM\Entity;
  * @property int $duration
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- * @property \Cake\I18n\FrozenDate $release_date
  *
  * @property \App\Model\Entity\Showtime[] $showtimes
  */
 class Movie extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

@@ -1,17 +1,15 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
-
 /**
  * Showtimes Controller
  *
+ * @property \App\Model\Table\ShowtimesTable $Showtimes
  *
  * @method \App\Model\Entity\Showtime[] paginate($object = null, array $settings = [])
  */
 class ShowtimesController extends AppController
 {
-
     /**
      * Index method
      *
@@ -19,12 +17,13 @@ class ShowtimesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Movies', 'Rooms']
+        ];
         $showtimes = $this->paginate($this->Showtimes);
-
         $this->set(compact('showtimes'));
         $this->set('_serialize', ['showtimes']);
     }
-
     /**
      * View method
      *
@@ -35,13 +34,11 @@ class ShowtimesController extends AppController
     public function view($id = null)
     {
         $showtime = $this->Showtimes->get($id, [
-            'contain' => []
+            'contain' => ['Movies', 'Rooms']
         ]);
-
         $this->set('showtime', $showtime);
         $this->set('_serialize', ['showtime']);
     }
-
     /**
      * Add method
      *
@@ -54,15 +51,15 @@ class ShowtimesController extends AppController
             $showtime = $this->Showtimes->patchEntity($showtime, $this->request->getData());
             if ($this->Showtimes->save($showtime)) {
                 $this->Flash->success(__('The showtime has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The showtime could not be saved. Please, try again.'));
         }
-        $this->set(compact('showtime'));
+        $movies = $this->Showtimes->Movies->find('list', ['limit' => 200]);
+        $rooms = $this->Showtimes->Rooms->find('list', ['limit' => 200]);
+        $this->set(compact('showtime', 'movies', 'rooms'));
         $this->set('_serialize', ['showtime']);
     }
-
     /**
      * Edit method
      *
@@ -79,15 +76,15 @@ class ShowtimesController extends AppController
             $showtime = $this->Showtimes->patchEntity($showtime, $this->request->getData());
             if ($this->Showtimes->save($showtime)) {
                 $this->Flash->success(__('The showtime has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The showtime could not be saved. Please, try again.'));
         }
-        $this->set(compact('showtime'));
+        $movies = $this->Showtimes->Movies->find('list', ['limit' => 200]);
+        $rooms = $this->Showtimes->Rooms->find('list', ['limit' => 200]);
+        $this->set(compact('showtime', 'movies', 'rooms'));
         $this->set('_serialize', ['showtime']);
     }
-
     /**
      * Delete method
      *
@@ -104,7 +101,6 @@ class ShowtimesController extends AppController
         } else {
             $this->Flash->error(__('The showtime could not be deleted. Please, try again.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
 }

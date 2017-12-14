@@ -1,17 +1,15 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
-
 /**
  * Movies Controller
  *
- *
+ * @property \App\Model\Table\MoviesTable $Movies
  * @method \App\Model\Entity\Movie[] paginate($object = null, array $settings = [])
  */
+ 
 class MoviesController extends AppController
 {
-
     /**
      * Index method
      *
@@ -20,11 +18,9 @@ class MoviesController extends AppController
     public function index()
     {
         $movies = $this->paginate($this->Movies);
-
         $this->set(compact('movies'));
         $this->set('_serialize', ['movies']);
     }
-
     /**
      * View method
      *
@@ -35,13 +31,11 @@ class MoviesController extends AppController
     public function view($id = null)
     {
         $movie = $this->Movies->get($id, [
-            'contain' => []
+            'contain' => ['Showtimes']
         ]);
-
         $this->set('movie', $movie);
         $this->set('_serialize', ['movie']);
     }
-
     /**
      * Add method
      *
@@ -51,15 +45,11 @@ class MoviesController extends AppController
     {
         $movie = $this->Movies->newEntity();
         if ($this->request->is('post')) {
+            
             $movie = $this->Movies->patchEntity($movie, $this->request->getData());
-<<<<<<< HEAD
-            debugopen ($movie);
-            die();
-=======
->>>>>>> eba420a52cb6ce31b4b01b43398ebd3c09a28f56
+           
             if ($this->Movies->save($movie)) {
                 $this->Flash->success(__('The movie has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The movie could not be saved. Please, try again.'));
@@ -67,7 +57,6 @@ class MoviesController extends AppController
         $this->set(compact('movie'));
         $this->set('_serialize', ['movie']);
     }
-
     /**
      * Edit method
      *
@@ -84,7 +73,6 @@ class MoviesController extends AppController
             $movie = $this->Movies->patchEntity($movie, $this->request->getData());
             if ($this->Movies->save($movie)) {
                 $this->Flash->success(__('The movie has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The movie could not be saved. Please, try again.'));
@@ -92,7 +80,6 @@ class MoviesController extends AppController
         $this->set(compact('movie'));
         $this->set('_serialize', ['movie']);
     }
-
     /**
      * Delete method
      *
@@ -109,7 +96,6 @@ class MoviesController extends AppController
         } else {
             $this->Flash->error(__('The movie could not be deleted. Please, try again.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
 }

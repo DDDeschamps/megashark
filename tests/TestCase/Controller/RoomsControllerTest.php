@@ -1,24 +1,22 @@
 <?php
 namespace App\Test\TestCase\Controller;
-
 use App\Controller\RoomsController;
 use Cake\TestSuite\IntegrationTestCase;
-
 /**
  * App\Controller\RoomsController Test Case
  */
 class RoomsControllerTest extends IntegrationTestCase
 {
-
     /**
      * Fixtures
      *
      * @var array
      */
     public $fixtures = [
-        'app.rooms'
+        'app.rooms',
+        'app.showtimes',
+        'app.movies'
     ];
-
     /**
      * Test index method
      *
@@ -28,7 +26,6 @@ class RoomsControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test view method
      *
@@ -38,7 +35,6 @@ class RoomsControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test add method
      *
@@ -48,7 +44,6 @@ class RoomsControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test edit method
      *
@@ -58,7 +53,6 @@ class RoomsControllerTest extends IntegrationTestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
     /**
      * Test delete method
      *

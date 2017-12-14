@@ -1,15 +1,12 @@
 <?php
 namespace App\Test\Fixture;
-
 use Cake\TestSuite\Fixture\TestFixture;
-
 /**
  * ShowtimesFixture
  *
  */
 class ShowtimesFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -33,7 +30,6 @@ class ShowtimesFixture extends TestFixture
         ],
     ];
     // @codingStandardsIgnoreEnd
-
     /**
      * Records
      *
@@ -44,10 +40,10 @@ class ShowtimesFixture extends TestFixture
             'id' => 1,
             'movie_id' => 1,
             'room_id' => 1,
-            'start' => '2017-11-28 17:29:50',
-            'end' => '2017-11-28 17:29:50',
-            'created' => '2017-11-28 17:29:50',
-            'modified' => '2017-11-28 17:29:50'
+            'start' => '2017-11-29 18:37:41',
+            'end' => '2017-11-29 18:37:41',
+            'created' => '2017-11-29 18:37:41',
+            'modified' => '2017-11-29 18:37:41'
         ],
     ];
 }

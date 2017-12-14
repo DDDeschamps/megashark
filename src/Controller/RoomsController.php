@@ -1,17 +1,15 @@
 <?php
 namespace App\Controller;
-
 use App\Controller\AppController;
-
 /**
  * Rooms Controller
  *
+ * @property \App\Model\Table\RoomsTable $Rooms
  *
  * @method \App\Model\Entity\Room[] paginate($object = null, array $settings = [])
  */
 class RoomsController extends AppController
 {
-
     /**
      * Index method
      *
@@ -20,11 +18,9 @@ class RoomsController extends AppController
     public function index()
     {
         $rooms = $this->paginate($this->Rooms);
-
         $this->set(compact('rooms'));
         $this->set('_serialize', ['rooms']);
     }
-
     /**
      * View method
      *
@@ -34,14 +30,21 @@ class RoomsController extends AppController
      */
     public function view($id = null)
     {
-        $room = $this->Rooms->get($id, [
-            'contain' => []
-        ]);
-
+        $room = $this->Rooms->get($id, ['contain' => []]);
+        $showtimes = $this
+            ->Rooms
+            ->Showtimes
+            ->find('all')
+            ->contain('Movies')
+            ->where(['Showtimes.room_id =' => $id,
+                     'Showtimes.start >=' => (new \DateTime('monday this week')),
+                     'Showtimes.end <=' => (new \DateTime('sunday this week'))]);
+       
+        $this->set('showtimes',$showtimes);
+       
         $this->set('room', $room);
         $this->set('_serialize', ['room']);
     }
-
     /**
      * Add method
      *
@@ -54,7 +57,6 @@ class RoomsController extends AppController
             $room = $this->Rooms->patchEntity($room, $this->request->getData());
             if ($this->Rooms->save($room)) {
                 $this->Flash->success(__('The room has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The room could not be saved. Please, try again.'));
@@ -62,7 +64,6 @@ class RoomsController extends AppController
         $this->set(compact('room'));
         $this->set('_serialize', ['room']);
     }
-
     /**
      * Edit method
      *
@@ -79,7 +80,6 @@ class RoomsController extends AppController
             $room = $this->Rooms->patchEntity($room, $this->request->getData());
             if ($this->Rooms->save($room)) {
                 $this->Flash->success(__('The room has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The room could not be saved. Please, try again.'));
@@ -87,7 +87,6 @@ class RoomsController extends AppController
         $this->set(compact('room'));
         $this->set('_serialize', ['room']);
     }
-
     /**
      * Delete method
      *
@@ -104,7 +103,6 @@ class RoomsController extends AppController
         } else {
             $this->Flash->error(__('The room could not be deleted. Please, try again.'));
         }
-
         return $this->redirect(['action' => 'index']);
     }
 }

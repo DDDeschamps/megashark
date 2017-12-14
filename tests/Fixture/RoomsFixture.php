@@ -1,15 +1,12 @@
 <?php
 namespace App\Test\Fixture;
-
 use Cake\TestSuite\Fixture\TestFixture;
-
 /**
  * RoomsFixture
  *
  */
 class RoomsFixture extends TestFixture
 {
-
     /**
      * Fields
      *
@@ -31,7 +28,6 @@ class RoomsFixture extends TestFixture
         ],
     ];
     // @codingStandardsIgnoreEnd
-
     /**
      * Records
      *
@@ -42,8 +38,8 @@ class RoomsFixture extends TestFixture
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'capacity' => 1,
-            'created' => '2017-11-28 17:29:32',
-            'modified' => '2017-11-28 17:29:32'
+            'created' => '2017-11-29 18:37:51',
+            'modified' => '2017-11-29 18:37:51'
         ],
     ];
 }

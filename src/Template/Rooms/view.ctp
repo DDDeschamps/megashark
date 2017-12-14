@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \Cake\Datasource\EntityInterface $room
+ * @var \App\Model\Entity\Room $room
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -36,5 +36,44 @@
             <th scope="row"><?= __('Modified') ?></th>
             <td><?= h($room->modified) ?></td>
         </tr>
+        <tr>
+            <th scope="row">Liste des films : </th>
+        <tr>
+        
+    </table>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Lun</th>
+            <th scope="col">Mar</th>
+            <th scope="col">Mer</th>
+            <th scope="col">Jeu</th>
+            <th scope="col">Vend</th>
+            <th scope="col">Sam</th>
+            <th scope="col">Dim</th>
+        </tr>
+        </thead>
+        <tr>
+    
+    
+   <?php for($i=1;$i<=7;$i++){?>
+   <td>
+    <table>
+        <?php foreach ($showtimes as $showtime): 
+        
+        $test = ($showtime->start)->format('N');
+        if ($test==$i){?>
+          <tr>
+            <td>Nom = <?= h($showtime->movie->name ) ?><br>
+            Duree = <?= h($showtime->movie->duration ) ?> min<br>
+          </tr>
+        <?php }?>
+        <?php endforeach;  ?>
+    </table>
+    </td> 
+    <?php } ?>
+    
+   
+    </td>
     </table>
 </div>

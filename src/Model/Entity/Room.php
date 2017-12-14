@@ -1,8 +1,6 @@
 <?php
 namespace App\Model\Entity;
-
 use Cake\ORM\Entity;
-
 /**
  * Room Entity
  *
@@ -16,7 +14,6 @@ use Cake\ORM\Entity;
  */
 class Room extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
